@@ -46,7 +46,23 @@ namespace EmpoweredWoman.Server.Controllers
 
             },
         };
+        [HttpGet]
+        public async Task<ActionResult<List<SuperHero>>> GetSuperHeroes()
+        {
+            
+            return Ok(heroes);
+        }
 
+        [HttpGet("{id}")]
+        public async Task<ActionResult<SuperHero>> GetSingleHero(int id)
+        {
+            var hero = heroes.FirstOrDefault(h => h.Id == id);
+            if (hero == null)
+            {
+                return NotFound("Sorry, no hero here. :/");
+            }
+            return Ok(hero);
+        }
     }
 }
 
