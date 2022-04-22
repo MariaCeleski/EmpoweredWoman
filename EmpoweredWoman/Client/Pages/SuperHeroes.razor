@@ -1,5 +1,6 @@
 ﻿@page "/superheroes"
 @inject ISuperHeroService SuperHeroService
+@inject NavigationManager NavigationManager
 
 <PageTitle>Super Heroin</PageTitle>
 
@@ -14,7 +15,6 @@
             <th>Company</th>
             <th>Financial Bank</th>
             <th>Actions</th>
-            <th>Local Actions</th>
             <th>Position</th>
             <th></th>
             
@@ -31,10 +31,9 @@
                 <td>@hero.Company</td>
                 <td>@hero.FinancialBank</td>
                 <td>@hero.Actions</td>
-                 <td>@hero.LocalActions</td>
                 <td>@hero.Position.Name</td>
                 <td>
-                   
+                   <button class="btn btn-primary" @onclick="(() => ShowHero(hero.Id))"><i class="oi oi-pencil"></i></button>
                 </td>
             </tr>
         }
@@ -48,5 +47,9 @@
         await SuperHeroService.GetSuperHeroes();
     }
 
+     void ShowHero(int id)
+    {
+        NavigationManager.NavigateTo($"hero/{id}");
+    }
     
 }

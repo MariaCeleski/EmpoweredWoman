@@ -15,7 +15,6 @@ namespace EmpoweredWoman.Shared
         public string Company { get; set; } = string.Empty;
         public string FinancialBank { get; set; } = string.Empty;
         public string Actions { get; set; } = string.Empty;
-        public string LocalActions { get; set; } = string.Empty;
         public Position? Position { get; set; }
         public int PositionId { get; set; }
     }

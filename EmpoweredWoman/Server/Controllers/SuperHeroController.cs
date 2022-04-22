@@ -28,7 +28,6 @@ namespace EmpoweredWoman.Server.Controllers
                 Company = "PrograMaria",
                 FinancialBank = "",
                 Actions = "",
-                LocalActions = "",
                 Position = positions[0]
             },
 
@@ -41,7 +40,6 @@ namespace EmpoweredWoman.Server.Controllers
                 Company = "PyLadies",
                 FinancialBank = "",
                 Actions = "",
-                LocalActions = "",
                 Position = positions[1]
 
             },
