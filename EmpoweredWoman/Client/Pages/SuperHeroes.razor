@@ -31,7 +31,7 @@
                 <td>@hero.Company</td>
                 <td>@hero.FinancialBank</td>
                 <td>@hero.Actions</td>
-                <td>@hero.Position.Name</td>
+                <td>@hero.Position?.Name</td>
                 <td>
                    <button class="btn btn-primary" @onclick="(() => ShowHero(hero.Id))"><i class="oi oi-pencil"></i></button>
                 </td>
@@ -40,6 +40,8 @@
 
         </tbody>
         </table>
+
+        <button class="btn btn-primary" @onclick="CreateNewHero">Create New Hero</button>
 
 @code {
     protected override async Task OnInitializedAsync()
