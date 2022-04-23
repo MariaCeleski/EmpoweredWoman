@@ -8,6 +8,7 @@ namespace EmpoweredWoman.Server.Controllers
     [ApiController]
     public class SuperHeroController : ControllerBase
     {
+
         public static List<Position> positions = new List<Position>
         {
             new Position{ Id = 1, Name = "Developer"},
@@ -41,7 +42,6 @@ namespace EmpoweredWoman.Server.Controllers
                 FinancialBank = "",
                 Actions = "",
                 Position = positions[1]
-
             },
         };
         [HttpGet]
