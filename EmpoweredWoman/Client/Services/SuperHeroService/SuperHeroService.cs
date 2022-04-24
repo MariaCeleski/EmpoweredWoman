@@ -40,7 +40,7 @@ namespace EmpoweredWoman.Client.Services.SuperHeroService
 
         public async Task GetPosition()
         {
-            var result = await _http.GetFromJsonAsync<List<Position>>("api/superhero/comics");
+            var result = await _http.GetFromJsonAsync<List<Position>>("api/superhero/positions");
             if (result != null)
                 Position = result;
         }

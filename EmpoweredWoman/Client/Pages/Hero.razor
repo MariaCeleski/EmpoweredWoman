@@ -4,14 +4,14 @@
 
 @if (Id == null)
 {
-    <PageTitle>Create a new Super Heroin</PageTitle>
-    <h3>Create a new Super Heroin</h3>
+    <PageTitle>Create a new Super Hero</PageTitle>
+    <h3>Create a new Super Hero</h3>
 }
 else
-@*{
-    <PageTitle>Edit @hero.HeroName</PageTitle>
-    <h3>Edit @hero.HeroName</h3>
-}*@
+{
+    @*<PageTitle>Edit @hero.HeroName</PageTitle>
+    <h3>Edit @hero.HeroName</h3>*@
+}
 
 <EditForm Model="hero" OnSubmit="HandleSubmit">
     <div>
