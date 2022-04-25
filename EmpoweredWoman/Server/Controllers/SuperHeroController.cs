@@ -9,44 +9,6 @@ namespace EmpoweredWoman.Server.Controllers
     [ApiController]
     public class SuperHeroController : ControllerBase
     {
-
-        //public static List<Position> positions = new List<Position>
-        //{
-        //    new Position{ Id = 1, Name = "Developer"},
-        //    new Position{ Id = 2, Name = "Teacher" },
-        //    new Position{ Id = 3, Name = "Assistant" },
-        //    new Position{ Id = 4, Name = "Administrative" },
-        //    new Position{ Id = 5, Name = "Principal" }
-        //};
-
-        //public static List<SuperHero> heroes = new List<SuperHero>
-        //{
-        //    new SuperHero
-        //    {
-        //        Id = 1,
-        //        FirstName = "Maria",
-        //        LastName = "Celeski",
-        //        Country = "Brazil",
-        //        Company = "PrograMaria",
-        //        FinancialBank = "",
-        //        Actions = "",
-        //        Position = positions[0],
-        //        PositionId = 1,
-        //    },
-
-        //    new SuperHero
-        //    {
-        //        Id = 2,
-        //        FirstName = "Jessica",
-        //        LastName = "Matheus",
-        //        Country = "Brazil",
-        //        Company = "PyLadies",
-        //        FinancialBank = "",
-        //        Actions = "",
-        //        Position = positions[1],
-        //        PositionId = 2,
-        //    },
-        //};
         private readonly DataContext _Context;
         public SuperHeroController(DataContext Context)
         {
