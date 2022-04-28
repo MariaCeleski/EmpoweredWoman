@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components;
 using System.Net.Http.Json;
 
 
@@ -16,15 +16,9 @@ namespace EmpoweredWoman.Client.Services.SuperHeroService
         }
 
         public List<SuperHero> Heroes { get; set; } = new List<SuperHero>();
-        public List<Position> Position { get; set; } = new List<Position>();
-        public List<Position> Positions { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-
-        public async Task CreateHero(SuperHero hero)
-        {
-            var result = await _http.PostAsJsonAsync("api/superhero", hero);
-            await SetHeroes(result);
-        }
-
+        public List<Position> Positions { get; set; } = new List<Position>();
+       
+                
         private async Task SetHeroes(HttpResponseMessage result)
         {
             var response = await result.Content.ReadFromJsonAsync<List<SuperHero>>();
@@ -32,17 +26,22 @@ namespace EmpoweredWoman.Client.Services.SuperHeroService
             _navigationManager.NavigateTo("superheroes");
         }
 
+        public async Task CreateHero(SuperHero hero)
+        {
+            var result = await _http.PostAsJsonAsync("api/superhero", hero);
+            await SetHeroes(result);
+        }
         public async Task DeleteHero(int id)
         {
             var result = await _http.DeleteAsync($"api/superhero/{id}");
             await SetHeroes(result);
         }
 
-        public async Task GetPosition()
+        public async Task GetPositions()
         {
             var result = await _http.GetFromJsonAsync<List<Position>>("api/superhero/positions");
             if (result != null)
-                Position = result;
+                Positions = result;
         }
 
         public async Task<SuperHero> GetSingleHero(int id)
@@ -66,9 +65,6 @@ namespace EmpoweredWoman.Client.Services.SuperHeroService
             await SetHeroes(result);
         }
 
-        public Task GetPositions()
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }
