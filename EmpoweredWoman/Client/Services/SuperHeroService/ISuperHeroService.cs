@@ -1,4 +1,4 @@
-﻿namespace EmpoweredWoman.Client.Services.SuperHeroService
+namespace EmpoweredWoman.Client.Services.SuperHeroService
 {
     public interface ISuperHeroService
     {
