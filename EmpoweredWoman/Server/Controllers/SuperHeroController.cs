@@ -19,21 +19,21 @@ namespace EmpoweredWoman.Server.Controllers
         [HttpGet]
         public async Task<ActionResult<List<SuperHero>>> GetSuperHeroes()
         {
-            var heroes = await _context.SuperHeroes.Include(sh => sh.Position).ToListAsync();
+            var heroes = await _Context.SuperHeroes.Include(sh => sh.Position).ToListAsync();
             return Ok(heroes);
         }
 
         [HttpGet("positions")]
         public async Task<ActionResult<List<Position>>> GetPositions()
         {
-            var positions = await _context.Positions.ToListAsync();
+            var positions = await _Context.Positions.ToListAsync();
             return Ok(positions);
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<SuperHero>> GetSingleHero(int id)
         {
-            var hero = await _context.SuperHeroes
+            var hero = await _Context.SuperHeroes
                 .Include(h => h.Position)
                 .FirstOrDefaultAsync(h => h.Id == id);
             if (hero == null)
@@ -47,8 +47,8 @@ namespace EmpoweredWoman.Server.Controllers
         public async Task<ActionResult<List<SuperHero>>> CreateSuperHero(SuperHero hero)
         {
             hero.Position = null;
-            _context.SuperHeroes.Add(hero);
-            await _context.SaveChangesAsync();
+            _Context.SuperHeroes.Add(hero);
+            await _Context.SaveChangesAsync();
 
             return Ok(await GetDbHeroes());
         }
@@ -56,7 +56,7 @@ namespace EmpoweredWoman.Server.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult<List<SuperHero>>> UpdateSuperHero(SuperHero hero, int id)
         {
-            var dbHero = await _context.SuperHeroes
+            var dbHero = await _Context.SuperHeroes
                 .Include(sh => sh.Position)
                 .FirstOrDefaultAsync(sh => sh.Id == id);
             if (dbHero == null)
@@ -70,7 +70,7 @@ namespace EmpoweredWoman.Server.Controllers
             dbHero.Actions = hero.Actions;
             dbHero.PositionId = hero.PositionId;
 
-            await _context.SaveChangesAsync();
+            await _Context.SaveChangesAsync();
 
             return Ok(await GetDbHeroes());
         }
@@ -78,21 +78,21 @@ namespace EmpoweredWoman.Server.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<List<SuperHero>>> DeleteSuperHero(int id)
         {
-            var dbHero = await _context.SuperHeroes
+            var dbHero = await _Context.SuperHeroes
                 .Include(sh => sh.Position)
                 .FirstOrDefaultAsync(sh => sh.Id == id);
             if (dbHero == null)
                 return NotFound("Sorry, but no hero for you. :/");
 
-            _context.SuperHeroes.Remove(dbHero);
-            await _context.SaveChangesAsync();
+            _Context.SuperHeroes.Remove(dbHero);
+            await _Context.SaveChangesAsync();
 
             return Ok(await GetDbHeroes());
         }
 
         private async Task<List<SuperHero>> GetDbHeroes()
         {
-            return await _context.SuperHeroes.Include(sh => sh.Position).ToListAsync();
+            return await _Context.SuperHeroes.Include(sh => sh.Position).ToListAsync();
         }
     }
 }
